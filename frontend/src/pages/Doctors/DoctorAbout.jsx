@@ -1,17 +1,17 @@
 import React from 'react'
 import { formateDate } from '../../utils/formatDate'
 
-const DoctorAbout = () => {
+const DoctorAbout = ({name,about,qualifications,experiences}) => {
   return <div>
     <div>
         <h3 className='text-[20px] leading-[30px] text-headingColor font-semibold flex items-center gap-2'>
         About of
         <span className='text-irisBlueColor font-bold text-[24px] leading-9'>
-            Dinesh Agarwal
+            {name}
         </span>
         </h3> 
         <p className='text_para'>
-        Orthopedic specialist dedicated to providing expert care for musculoskeletal conditions, ensuring patients regain mobility and quality of life.
+            {about}
         </p>
     </div>
 
@@ -20,33 +20,24 @@ const DoctorAbout = () => {
             Education
         </h3>
         <ul className='pt-4 md:pt-5'>
-            <li className='flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5 mb-[30px]'>
+
+            {qualifications?.map((item,index)=><li key={index} className='flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5 mb-[30px]'>
                 <div>
                     <span className='text-irisBlueColor text-[15px] leading-6 font-semibold'>
-                    {formateDate("10-06-2008")}-{formateDate("06-01-2010")}
+                    {formateDate(item.startingDate)}-{formateDate(item.endingDate)}
 
                     </span>
                     <p className='text-[16px] leading-6 font-medium text-textColor'>
-                        M.D. in Orthopedic
+                        {item.degree}
                     </p>
                 </div>
                 <p className='text-[14px] leading-5 font-medium text-textColord'>
-                    Puducherry Hospital, Puducherry.
+                    {item.university}
                 </p>
-            </li>
-            <li className='flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5 mb-[30px]'>
-                <div>
-                    <span className='text-irisBlueColor text-[15px] leading-6 font-semibold'>
-                        {formateDate("12-04-2004")} -{formateDate("08-14-2008")}
-                    </span>
-                    <p className='text-[16px] leading-6 font-medium text-textColor'>
-                        M.B.B.S. 
-                    </p>
-                </div>
-                <p className='text-[14px] leading-5 font-medium text-textColord'>
-                    AIIMS, Delhi.
-                </p>
-            </li>
+            </li>)}
+
+            
+           
         </ul>
      </div>
 
@@ -56,28 +47,21 @@ const DoctorAbout = () => {
         </h3>
 
         <ul className='grid sm:grid-cols-2 gap-[30px] pt-4 md:p-5'>
-            <li className='p-4 rounded bg-[#fff9ea]'>
+
+            {experiences?.map((item,index)=> <li key={index} className='p-4 rounded bg-[#fff9ea]'>
                 <span className='text-yellowColor text-[15px] leading-6 font-semibold'>
-                {formateDate("10-06-2011")}-{formateDate("06-01-2015")}
+                {formateDate(item.startingDate)}-{formateDate(item.endingDate)}
                 </span>
                 <p className='text-[16px] leading-6 font-medium text-textColor'>
-                    Sr. Doctor
+                    {item.position}
                 </p>
                 <p className='text-[14px] leading-5 font-medium text-textColor'>
-                    AIIMS,Ranchi
+                    {item.hospital}
                 </p>
-            </li> 
-            <li className='p-4 rounded bg-[#fff9ea]'>
-                <span className='text-yellowColor text-[15px] leading-6 font-semibold'>
-                {formateDate("06-02-2015")}-{formateDate("03-11-2021")}
-                </span>
-                <p className='text-[16px] leading-6 font-medium text-textColor'>
-                    Sr. Doctor
-                </p>
-                <p className='text-[14px] leading-5 font-medium text-textColor'>
-                    AIIMS,Vellore
-                </p>
-            </li> 
+            </li> )}
+
+           
+            
         </ul>
     </div>
   </div>
