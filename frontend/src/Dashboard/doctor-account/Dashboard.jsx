@@ -7,6 +7,7 @@ import { BASE_URL } from '../../config'
 import starIcon from '../../assets/images/Star.png'
 import DoctorAbout from './../../pages/Doctors/DoctorAbout'
 import Profile from './Profile'
+import Appointments from './Appointments'
 const Dashboard = () => {
 
   const {data,loading,error}= useGetProfile(`${BASE_URL}/doctors/profile/me`);
@@ -65,7 +66,7 @@ const Dashboard = () => {
                     </div>
                     <DoctorAbout className={data.name} about={data.about} qualifications={data.qualifications} experiences={data.experiences} />
                   </div>)}
-                {tab==='appointments' &&  <div>appointments</div>}
+                {tab==='appointments' &&  <Appointments appointments={data.appointments}/>}
                 {tab==='settings' &&  <Profile doctorData={data}/>}
               </div>
             </div>
