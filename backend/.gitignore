@@ -1,3 +1,4 @@
-node_modules
-crpto.js
-.env
+# .gitignore
+node_modules/
+*.log
+*.env
